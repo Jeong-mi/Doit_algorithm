@@ -2,24 +2,26 @@ package ch3;
 
 import java.util.Scanner;
 
-public class BinSearch {
-	
-	static int BinSearch(int[] a, int n, int key) {
+public class BinSearchX {
+
+	static int BinSearchX(int[] a, int n, int key) {
 		int pl=0;
 		int pr=n-1;
 		
 		do {
-			int pc = (pl+pr)/2;
-			if(a[pc] == key)
-				return pc;
-			else if(a[pc] < key)
-				pl = pc + 1;
+			int pc = (pl + pr) / 2; // 중앙요소의 index
+			if (a[pc] == key) {
+				for (; pc > pl; pc--) // key와 같은 맨 앞의 요소를 찾습니다
+					if (a[pc - 1] < key)
+						break;
+				return pc; // 검색성공
+			} else if (a[pc] < key)
+				pl = pc + 1; // 검색범위를 앞쪽 절반으로 좁힘
 			else
-				pr=pc-1;
-				
-		}while(pl<=pr);
-		
-		return -1;
+				pr = pc - 1; // 검색범위를 뒤쪽 절반으로 좁힘
+		} while (pl <= pr);
+
+		return -1; // 검색실패
 	}
 
 	public static void main(String[] args) {
@@ -44,7 +46,7 @@ public class BinSearch {
 		System.out.print("검색할 값: ");
 		int ky = stdIn.nextInt();
 		
-		int idx = BinSearch(x, num, ky);
+		int idx = BinSearchX(x, num, ky);
 		
 		if(idx == -1)
 			System.out.println("그 값의 요소가 없습니다.");
