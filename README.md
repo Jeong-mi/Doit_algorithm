@@ -1,1 +1,1 @@
-# Doit_algorithm 도서 방학동안 끝장 본다!!!!!
+# Doit_algorithm 방학동안 알고리즘 공부하기
